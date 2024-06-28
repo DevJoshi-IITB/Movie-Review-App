@@ -30,4 +30,4 @@ This is a React-based Movie Review Application that allows users to view, add, a
 
 5. **Review Management**
     - Users can view, edit, and delete their own reviews.
-    - Admin users can view and delete any review.
+    - Admin users can view and delete any of the reviews.
