@@ -12,6 +12,8 @@ function MovieDetailsPage() {
     const [reviews, setReviews] = useState([]);
     const [newReview, setNewReview] = useState({ rating: '', comment: '' });
     const [currentUser, setCurrentUser] = useState(null);
+    const [currUser, setCurrUser] = useState(null);
+
     const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
 
@@ -37,6 +39,7 @@ function MovieDetailsPage() {
                     navigate('/login');
                 }
                 setIsAdmin(currentUser.email === 'devrjoshi15@gmail.com');
+                setCurrUser(currentUser.displayName);
             });
         };
         checkUser();
@@ -51,7 +54,7 @@ function MovieDetailsPage() {
             const review = {
                 id: String(reviews.length + 1),
                 movieId: String(parseInt(id)),
-                username: currentUser.diaplayName,
+                username: currentUser.displayName,
                 rating: String(parseInt(newReview.rating)),
                 comment: newReview.comment,
             };
@@ -90,7 +93,7 @@ function MovieDetailsPage() {
                             <h5 className="card-title">{review.username}</h5>
                             <p className="card-text">{review.comment}</p>
                             <p className="card-text"><small className="text-muted">Rating: {review.rating} stars</small></p>
-                            {isAdmin ?
+                            {isAdmin || currUser === review.username ?
                                 <button className="btn btn-danger" onClick={() => handleReviewDelete(review.id)}>Delete</button> : ""}
                         </div>
                     </div>
