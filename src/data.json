@@ -28,6 +28,7 @@
         {
             "id": "1",
             "movieId": "1",
+            "username": "Dev Joshi",
             "rating": "5",
             "comment": "nice film"
         }
